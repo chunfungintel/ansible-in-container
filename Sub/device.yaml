@@ -1,0 +1,11 @@
+---
+- name: proxy settings
+  stat:
+    path: /dev/dxg
+  register: dxg
+- debug:
+    msg: "/dev/dxg exists"
+  when: dxg.stat.exists
+- debug:
+    msg: "/dev/dxg not exist"
+  when: not dxg.stat.exists

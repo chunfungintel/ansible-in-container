@@ -1,0 +1,9 @@
+---
+- name: Linux
+  shell: |
+    uname -a 
+  register: uname
+- debug: msg="{{ uname.stdout }}"
+- debug: msg="{{ uname.stderr }}"
+- debug:
+    var: uname 
