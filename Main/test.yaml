@@ -5,4 +5,5 @@
     playbookfolder: '/Linux'
   tasks:
     - include_tasks: '{{ playbookfolder }}/uname.yaml'
+    - include_tasks: '{{ playbookfolder }}/sudo.yaml'
     - include_tasks: '{{ playbookfolder }}/device.yaml'

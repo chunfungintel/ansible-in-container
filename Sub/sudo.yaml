@@ -1,0 +1,10 @@
+- name: sudo test
+  become: yes
+  register: sudo_test
+  shell: |
+    sudo ls
+    sudo pwd
+  args:
+    executable: /bin/bash
+- debug:
+    var: sudo_test
