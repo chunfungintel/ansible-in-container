@@ -37,7 +37,7 @@ default:
 	@echo HOST_FILE: ${HOST_FILE}
 	@echo ${host_file}
 
-run:
+run_hostfile:
 	docker run -it --rm \
 	-v ${HOST_FILE}:/host_all \
 	-v ${MAIN_PLAYBOOK_PATH}:/Main \
@@ -46,7 +46,7 @@ run:
 	ansible-playbook -i /host_all \
 	/Main/${SCRIPT_FILE}
 
-run_direct:
+run:
 	docker run -it --rm \
 	-v ${MAIN_PLAYBOOK_PATH}:/Main \
 	-v ${SUB_PLAYBOOK_PATH}:/Linux \
