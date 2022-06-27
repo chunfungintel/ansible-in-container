@@ -1,0 +1,9 @@
+- name: script install
+  hosts: all
+  become_method: sudo
+  vars:
+    playbookfolder: '/Linux'
+  tasks:
+    - include_tasks: '{{ playbookfolder }}/run-scripts.yaml'
+      vars:
+        bash_script: 'test.sh'

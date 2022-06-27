@@ -1,0 +1,7 @@
+- name: Run a script with arguments (free form)
+  become: yes
+  register: script
+  script: '{{ playbookfolder }}/scripts/{{ bash_script }}'
+- debug: msg="{{ script.stdout_lines }}"
+- debug: msg="{{ script.stderr_lines }}"
+
