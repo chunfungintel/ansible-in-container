@@ -9,24 +9,14 @@ MAIN_PLAYBOOK_PATH?=$(MKFILE_DIR)/Main
 SUB_PLAYBOOK_PATH?=$(MKFILE_DIR)/Sub
 
 HOST_FILE?=$(MKFILE_DIR)/hosts_all
-SCRIPT_FILE?=$(MAIN_PLAYBOOK_PATH?)/test.yaml
+SCRIPT_FILE?=test.yaml
 
-define host_file
-[ubuntu]
-ubuntu00 ansible_host=10.226.76.18
-
-[ubuntu:vars]
-ansible_connection=ssh
-ansible_user="ubuntu"
-#ansible_ssh_private_key_file={{ playbook_dir }}/{{ playbook_location }}/Windows/files/id_rsa
-ansible_ssh_pass="123456"
-ansible_port=22
-ansible_sudo_pass="123456"
-ansible_ssh_common_args="-o StrictHostKeyChecking=no -o GlobalKnownHostsFile=/dev/null -o UserKnownHostsFile=/dev/null"
-endef
 HOST_NAME?=10.226.76.18
 HOST_USER?=ubuntu
 HOST_PW?=123456
+
+
+.PHONY: run run_hostfile
 
 default:
 	@echo "Usage pending"
@@ -56,4 +46,6 @@ run:
 	-e 'ansible_connection=ssh ansible_user=${HOST_USER} ansible_ssh_pass="${HOST_PW}" ansible_port=22 ansible_sudo_pass="${HOST_PW}"' \
 	--ssh-common-args '-o StrictHostKeyChecking=no -o GlobalKnownHostsFile=/dev/null -o UserKnownHostsFile=/dev/null' \
 	/Main/${SCRIPT_FILE}
+
+uname: run
 

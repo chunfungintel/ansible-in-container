@@ -1,0 +1,7 @@
+- name: Linux hosts ping
+  hosts: all
+  become_method: sudo
+  vars:
+    playbookfolder: '/Linux'
+  tasks:
+    - include_tasks: '{{ playbookfolder }}/uname.yaml'

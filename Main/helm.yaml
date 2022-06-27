@@ -1,0 +1,7 @@
+- name: helm install
+  hosts: all
+  become_method: sudo
+  vars:
+    playbookfolder: '/Linux'
+  tasks:
+    - include_tasks: '{{ playbookfolder }}/helm-install.yaml'
